@@ -18,7 +18,10 @@ import Reviews from './pages/Reviews';
 import Contact from './pages/Contact';
 import NotFound from './pages/NotFound';
 
+import { useScrollReveal } from './hooks/useScrollReveal';
+
 export default function App() {
+  useScrollReveal();
   const [isBookingOpen, setIsBookingOpen] = useState(false);
   const [preferredService, setPreferredService] = useState('');
   const [lightboxIndex, setLightboxIndex] = useState(null);

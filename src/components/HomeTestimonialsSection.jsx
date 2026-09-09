@@ -9,7 +9,7 @@ export default function HomeTestimonialsSection({ onOpenBooking }) {
   const slides = [
     {
       id: 1,
-      quote: "It was one of my best experience. My all the looks were very different and amazing. Everybody liked my looks and makeover. I would definitely suggest Surbhi if you want some different and best makeovers.",
+      quote: "It was one of my best experience. My all the looks were very different and amazing. Everybody liked my looks and makeover. I would definitely suggest Jyoti if you want some different and best makeovers.",
       author: "Kajal Dhoot",
       images: {
         img1: "/images/jyotikhatri5.png", // Dominant portrait

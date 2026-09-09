@@ -1,46 +1,63 @@
 import React, { useState, useEffect, useRef } from 'react';
 
 export default function HomeWhyChooseSection({ onOpenBooking }) {
-  const [isVisible, setIsVisible] = useState(false);
+  const [visible, setVisible] = useState(false);
   const sectionRef = useRef(null);
 
   // High-resolution beauty & makeup assets
   const blockImages = {
-    block1: "/images/jyotikhatri11.png", // Beauty team / certified artists
-    block2: "/images/jyotikhatri6.png", // Artist expertise / bridal makeover
-    block3: "/images/Post6.png", // Luxury makeup products / palette
-    block4: "/images/jyotikhatri2222.png"  // Party / occasion makeup glam
+    block1: "/images/jyotikhatri11.png", // Certified artists team
+    block2: "/images/jyotikhatri6.png",  // Bridal makeover expertise
+    block3: "/images/Post6.png",        // Luxury makeup products
+    block4: "/images/jyotikhatri2222.png" // Occasion makeup glam
   };
 
   useEffect(() => {
+    const element = sectionRef.current;
+    if (!element) return;
+
+    if (!('IntersectionObserver' in window)) {
+      setVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
-          setIsVisible(true);
+          setVisible(true);
           observer.disconnect();
         }
       },
-      { threshold: 0.15 }
+      {
+        threshold: 0.12,
+        rootMargin: "0px 0px -50px 0px"
+      }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
+    observer.observe(element);
 
-    return () => observer.disconnect();
+    // Safe fallback (Requirement 14): force visibility after 1.5s if observer fails or hasn't fired
+    const fallbackTimer = setTimeout(() => {
+      setVisible(true);
+    }, 1500);
+
+    return () => {
+      clearTimeout(fallbackTimer);
+      observer.disconnect();
+    };
   }, []);
 
   return (
     <section
       ref={sectionRef}
       id="why-choose-editorial"
-      className={`home-why-choose-section ${isVisible ? 'is-visible' : ''}`}
+      className={`home-why-choose-section ${visible ? 'is-visible' : ''}`}
     >
       <div className="container">
         {/* CENTERED SECTION HEADER */}
         <div className="why-choose-header">
           <h2 className="why-choose-title">
-            Why Choose Surbhi Goindani Makeovers for Your Transformation?
+            Why Choose Jyoti Khatri for Your Transformation?
           </h2>
           <div className="heading-gold-line">
             <span></span>
@@ -77,8 +94,11 @@ export default function HomeWhyChooseSection({ onOpenBooking }) {
 
           {/* 4 EDITORIAL COLUMNS / BLOCKS */}
           <div className="why-choose-editorial-grid">
-            {/* BLOCK 01 — LEFT: IMAGE ON TOP, TEXT BELOW (margin-top: 0) */}
-            <div className="editorial-block block-1">
+            {/* BLOCK 01 — LEFT (Stagger: 100ms) */}
+            <div
+              className={`editorial-block block-1 ${visible ? 'editorial-block-visible' : ''}`}
+              style={{ '--card-delay': '100ms', transitionDelay: '100ms' }}
+            >
               <div className="editorial-img-frame frame-1">
                 <img
                   src={blockImages.block1}
@@ -91,13 +111,16 @@ export default function HomeWhyChooseSection({ onOpenBooking }) {
                   Trained and Certified Makeup Artists
                 </h3>
                 <p className="editorial-desc">
-                  Led by Surbhi Goindani, a certified makeup artist, our team stays updated with trending makeup techniques to ensure your look is always in style.
+                  Led by Jyoti Khatri, a certified luxury bridal makeup artist, our team stays updated with trending makeup techniques to ensure your look is always in style.
                 </p>
               </div>
             </div>
 
-            {/* BLOCK 02 — CENTER LEFT: TEXT ON TOP, IMAGE BELOW (margin-top: 65px) */}
-            <div className="editorial-block block-2">
+            {/* BLOCK 02 — CENTER LEFT (Stagger: 250ms) */}
+            <div
+              className={`editorial-block block-2 ${visible ? 'editorial-block-visible' : ''}`}
+              style={{ '--card-delay': '250ms', transitionDelay: '250ms' }}
+            >
               <div className="editorial-text-box">
                 <h3 className="editorial-title">
                   Expertise Backed by Experience
@@ -115,8 +138,11 @@ export default function HomeWhyChooseSection({ onOpenBooking }) {
               </div>
             </div>
 
-            {/* BLOCK 03 — CENTER RIGHT: IMAGE ON TOP, TEXT BELOW (margin-top: 0) */}
-            <div className="editorial-block block-3">
+            {/* BLOCK 03 — CENTER RIGHT (Stagger: 400ms) */}
+            <div
+              className={`editorial-block block-3 ${visible ? 'editorial-block-visible' : ''}`}
+              style={{ '--card-delay': '400ms', transitionDelay: '400ms' }}
+            >
               <div className="editorial-img-frame frame-3">
                 <img
                   src={blockImages.block3}
@@ -134,8 +160,11 @@ export default function HomeWhyChooseSection({ onOpenBooking }) {
               </div>
             </div>
 
-            {/* BLOCK 04 — RIGHT: TEXT ON TOP, IMAGE BELOW (margin-top: 75px) */}
-            <div className="editorial-block block-4">
+            {/* BLOCK 04 — RIGHT (Stagger: 550ms) */}
+            <div
+              className={`editorial-block block-4 ${visible ? 'editorial-block-visible' : ''}`}
+              style={{ '--card-delay': '550ms', transitionDelay: '550ms' }}
+            >
               <div className="editorial-text-box">
                 <h3 className="editorial-title">
                   Customized Solution For Each Occasion

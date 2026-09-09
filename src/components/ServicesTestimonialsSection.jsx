@@ -8,7 +8,7 @@ export default function ServicesTestimonialsSection() {
   const testimonials = [
     {
       id: 1,
-      quote: "I stressed over a lot of decisions I had to make for my wedding but Booking Surbhi Govindani Makeovers for my wedding makeup was certainly not one of them. I booked her for all events and every look was different and beautiful in its own way. Best thing about her makeup is she enhanced my features rather than giving the same look to every bride. I really felt flawless on my big day and not just made-up.",
+      quote: "I stressed over a lot of decisions I had to make for my wedding but Booking Jyoti Govindani Makeovers for my wedding makeup was certainly not one of them. I booked her for all events and every look was different and beautiful in its own way. Best thing about her makeup is she enhanced my features rather than giving the same look to every bride. I really felt flawless on my big day and not just made-up.",
       author: "Manisha Choudhary",
       images: {
         img1: "/images/jyotikhatri222222.png",
