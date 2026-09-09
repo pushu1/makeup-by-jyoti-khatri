@@ -13895,39 +13895,657 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
 
-/* MEDIA QUERIES FOR EDITORIAL FAQ */
-@media (max-width: 1024px) {
-  .faq-editorial-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
+/* ==========================================================================
+   COMPREHENSIVE RESPONSIVE DESIGN SYSTEM (320px to 2560px)
+   ========================================================================== */
+
+/* Global Reset & Base Fluid System */
+html,
+body,
+#root {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+img,
+video,
+svg {
+  max-width: 100%;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+/* Fluid Typography Base Enhancements */
+h1 {
+  font-size: clamp(2.1rem, 5vw, 4.5rem);
+}
+
+.section-title,
+.editorial-title,
+.info-card-title,
+.form-card-title {
+  font-size: clamp(1.75rem, 4vw, 3.5rem);
+}
+
+.eyebrow,
+.editorial-eyebrow,
+.banner-eyebrow-tag {
+  font-size: clamp(0.68rem, 1.2vw, 0.85rem);
+}
+
+/* Floating WhatsApp Layering Protection */
+.floating-whatsapp {
+  position: fixed !important;
+  z-index: 900 !important;
+}
+
+/* --------------------------------------------------------------------------
+   1. Ultra-Wide Displays (1920px+)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1920px) {
+  .container {
+    max-width: 1480px;
   }
-  .faq-editorial-left-col {
-    position: static;
+  .banner-split-left {
+    padding: 5rem 6rem 5rem 8rem;
   }
-  .faq-editorial-heading {
-    font-size: 2.8rem;
+  .banner-fullbleed-container {
+    padding-left: 10rem;
   }
 }
 
-@media (max-width: 768px) {
-  .contact-faq-editorial-section {
-    padding: 4.5rem 0;
+/* --------------------------------------------------------------------------
+   2. Laptops & Medium Desktops (1024px to 1279px)
+   -------------------------------------------------------------------------- */
+@media (min-width: 1024px) and (max-width: 1279px) {
+  .nav-links {
+    gap: 1.35rem;
   }
-  .faq-editorial-heading {
-    font-size: 2.2rem;
+  .nav-link {
+    font-size: 0.74rem;
   }
-  .faq-row-question {
-    font-size: 1.15rem;
+  .header-logo-img {
+    max-width: 210px;
+    height: 68px;
+    transform: scale(1.05);
   }
-  .faq-editorial-row-btn {
-    grid-template-columns: 35px 1fr 25px;
-    gap: 0.75rem;
-    padding: 1.25rem 0;
-  }
-  .faq-editorial-answer-body {
-    padding: 0 0 1.25rem 35px;
+  .services-occasion-grid,
+  .process-timeline-grid,
+  .bridal-journey-grid,
+  .bridal-mood-grid,
+  .lookbook-grid,
+  .instagram-feed-grid {
+    gap: 1.25rem;
   }
 }
+
+/* --------------------------------------------------------------------------
+   3. Tablets & Mobile (Under 1024px) - Un-cropped Hero & Natural Image Architecture
+   -------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  /* Header Responsive Navigation Toggle */
+  .nav-links {
+    display: none !important;
+  }
+  .mobile-toggle {
+    display: flex !important;
+  }
+  .header-logo-img {
+    max-width: 190px;
+    height: 54px;
+    transform: none;
+  }
+  .header.scrolled .header-logo-img {
+    height: 46px;
+    transform: none;
+  }
+  
+  /* Hero Slider Container Adaptation */
+  .hero-multi-banner-section {
+    height: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    margin-top: var(--header-height, 68px);
+    position: relative;
+    background: #FAF8F5;
+  }
+  .hero-banner-viewport {
+    position: relative !important;
+    height: auto !important;
+    min-height: auto !important;
+    width: 100% !important;
+  }
+  .hero-slide-banner-wrapper {
+    position: relative !important;
+    width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+    display: none;
+  }
+  .hero-slide-banner-wrapper.active {
+    display: flex !important;
+    flex-direction: column !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+  }
+
+  /* Slide 01 — Split Banner Mobile Stack (Image Top, Text Bottom) */
+  .banner-split-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .banner-split-right {
+    order: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    background: #1F1714;
+  }
+  .banner-split-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 58vh !important;
+    object-fit: contain !important; /* Preserves natural image ratio without cropping face/head */
+    display: block !important;
+    margin: 0 auto !important;
+  }
+  .banner-watermark-overlay {
+    top: 0.75rem !important;
+    right: 0.75rem !important;
+    padding: 0.3rem 0.6rem !important;
+  }
+  .banner-watermark-overlay img {
+    height: 24px !important;
+  }
+  .banner-split-left {
+    order: 2 !important;
+    width: 100% !important;
+    padding: 2rem 1.25rem 3.5rem 1.25rem !important;
+    background: #FAF8F5 !important;
+  }
+
+  /* Slide 02 — Fullbleed Editorial Panel Stack (Image Top, Text Card Bottom) */
+  .banner-fullbleed-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+    background: #1F1714;
+  }
+  .banner-fullbleed-bg-img {
+    order: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    max-height: 58vh !important;
+    object-fit: contain !important; /* Preserves complete image clear of text overlap */
+    display: block !important;
+    margin: 0 auto !important;
+  }
+  .banner-fullbleed-scrim-overlay {
+    display: none !important;
+  }
+  .banner-fullbleed-container {
+    order: 2 !important;
+    position: relative !important;
+    inset: auto !important;
+    padding: 0 !important;
+    width: 100% !important;
+    display: block !important;
+    background: #1F1714 !important;
+  }
+  .banner-fullbleed-editorial-panel {
+    position: relative !important;
+    background: #1F1714 !important;
+    border-top: 1px solid rgba(197, 160, 89, 0.3) !important;
+    border-radius: 0 !important;
+    padding: 2rem 1.25rem 3.5rem 1.25rem !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    box-shadow: none !important;
+  }
+  .banner-editorial-heading {
+    color: #FAF8F5 !important;
+    font-size: clamp(1.8rem, 5vw, 2.5rem) !important;
+  }
+
+  /* Slide 03 — Asymmetric Banner Stack */
+  .banner-asymmetric-wrapper {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+    background: #FAF8F5 !important;
+  }
+  .banner-asymmetric-sidebar {
+    display: none !important;
+  }
+  .banner-asymmetric-main {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    height: auto !important;
+  }
+  .banner-asymmetric-photo-frame {
+    order: 1 !important;
+    width: 100% !important;
+    height: auto !important;
+    position: relative !important;
+  }
+  .banner-photo-gold-border {
+    display: none !important;
+  }
+  .banner-asymmetric-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 58vh !important;
+    object-fit: contain !important; /* Preserves natural image ratio without cropping face/head */
+    display: block !important;
+  }
+  .banner-asymmetric-text-card {
+    order: 2 !important;
+    width: 100% !important;
+    padding: 2rem 1.25rem 3.5rem 1.25rem !important;
+  }
+
+  /* Hero Slider Arrows & Indicators on Mobile */
+  .hero-banner-arrow {
+    width: 36px !important;
+    height: 36px !important;
+    top: 30% !important;
+    transform: translateY(-50%) !important;
+  }
+  .hero-banner-arrow-left {
+    left: 8px !important;
+  }
+  .hero-banner-arrow-right {
+    right: 8px !important;
+  }
+  .hero-banner-indicators-bar {
+    position: absolute !important;
+    bottom: 1rem !important;
+    right: 1.25rem !important;
+    left: auto !important;
+    gap: 0.85rem !important;
+    z-index: 20 !important;
+  }
+
+  /* Subpage Hero Banner Scaling */
+  .page-banner {
+    padding: calc(var(--header-height, 68px) + 2rem) 1.25rem 2.5rem !important;
+    min-height: auto !important;
+  }
+  .page-banner-title {
+    font-size: clamp(1.8rem, 5vw, 3rem) !important;
+  }
+
+  .about-hero-section,
+  .reviews-hero-fullviewport,
+  .portfolio-hero-fullviewport {
+    min-height: auto !important;
+    height: auto !important;
+    padding: calc(var(--header-height, 68px) + 2rem) 1.25rem 2.5rem !important;
+  }
+  .reviews-hero-bg-img,
+  .portfolio-hero-bg-img {
+    object-fit: contain !important;
+    object-position: center top !important;
+  }
+
+  /* 2-Column Section Layout Conversions */
+  .about-hero-grid,
+  .more-than-makeup-grid,
+  .behind-brushes-grid,
+  .editorial-feature-grid,
+  .bridal-hero-grid,
+  .portfolio-hero-grid,
+  .love-letter-grid,
+  .stories-index-grid,
+  .review-slider-grid,
+  .remembers-interactive-grid,
+  .contact-studio-grid,
+  .faq-editorial-grid,
+  .contact-note-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+  }
+
+  .faq-editorial-left-col {
+    position: static;
+  }
+
+  /* Decorative side text ribbons removal for overflow prevention */
+  .about-hero-vertical-label,
+  .contact-hero-side-label,
+  .reviews-hero-bottom-label,
+  .banner-side-vertical-text {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   4. Small Tablets & Large Mobile (600px to 767px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  /* Section Vertical Spacing Compact Fix (Eliminates Huge Blank Spaces) */
+  .home-about-section,
+  .home-services-section,
+  .home-why-choose-section,
+  .home-academy-section,
+  .home-testimonials-section,
+  .home-blog-section,
+  .about-artist-section,
+  .about-story-section,
+  .about-why-choose-section,
+  .about-signature-section,
+  .about-behind-brushes-section,
+  .about-stats-section,
+  .about-final-cta-section,
+  .services-editorial-section,
+  .services-transformation-section,
+  .services-testimonials-section,
+  .services-final-cta-section,
+  .bridal-experience-section,
+  .portfolio-editorial-quote-section,
+  .contact-studio-section,
+  .contact-note-section,
+  .contact-faq-editorial-section,
+  .contact-final-cta-section {
+    padding: clamp(2.5rem, 5vw, 3.5rem) 0 !important;
+  }
+
+  .header {
+    height: 64px;
+  }
+  .header.scrolled {
+    height: 56px;
+  }
+  .header-logo-img {
+    max-width: 150px;
+    height: 42px;
+  }
+  .header.scrolled .header-logo-img {
+    height: 38px;
+  }
+  .social-icon-btn {
+    display: none !important;
+  }
+  .btn-header-primary {
+    padding: 0.48rem 0.85rem;
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+  }
+
+  .mobile-nav {
+    max-width: 320px;
+    width: 85vw;
+    padding: 2rem 1.25rem;
+  }
+
+  /* Home About Section Visual Frame Mobile Un-squeezed Refactor */
+  .home-about-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 2rem !important;
+    align-items: center !important;
+    width: 100% !important;
+  }
+  .home-about-visual {
+    width: 100% !important;
+    max-width: 360px !important;
+    height: auto !important;
+    margin: 0 auto !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    position: relative !important;
+  }
+  .home-about-arch-outline {
+    display: none !important;
+  }
+  .home-about-main-frame {
+    position: relative !important;
+    top: auto !important;
+    left: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    border-radius: 120px 120px 18px 18px !important;
+    box-shadow: var(--shadow-md) !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .home-about-main-img {
+    width: 100% !important;
+    height: auto !important;
+    max-height: 480px !important;
+    object-fit: contain !important;
+    display: block !important;
+  }
+  .home-about-secondary-frame,
+  .home-about-accent-badge {
+    display: none !important;
+  }
+  .home-about-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+    opacity: 1 !important;
+    text-align: center !important;
+  }
+  .home-about-title {
+    font-size: clamp(1.8rem, 4.5vw, 2.75rem) !important;
+  }
+  .home-about-stats-strip {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1rem !important;
+    width: 100% !important;
+    padding: 1.25rem 0 !important;
+  }
+  .home-about-stat-item {
+    align-items: center !important;
+    text-align: center !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+  .home-about-actions {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 0.85rem !important;
+    width: 100% !important;
+    transform: none !important;
+    opacity: 1 !important;
+  }
+
+  /* Grid Reductions */
+  .services-occasion-grid,
+  .main-services-grid,
+  .transformation-gallery-grid,
+  .packages-grid,
+  .process-timeline-grid,
+  .bridal-journey-grid,
+  .bridal-preparation-grid,
+  .bridal-mood-grid,
+  .bridal-packages-grid,
+  .portfolio-main-grid,
+  .lookbook-grid,
+  .letters-paper-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+
+  .instagram-feed-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 0.5rem !important;
+  }
+
+  .about-stats-minimal-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 1.25rem !important;
+  }
+
+  /* Button Stacking for Small Viewports */
+  .banner-cta-group,
+  .hero-cta-group,
+  .about-final-cta-buttons,
+  .contact-final-cta-buttons,
+  .reviews-final-cta-buttons {
+    flex-direction: column !important;
+    align-items: stretch !important;
+    width: 100% !important;
+  }
+
+  .btn-banner-gold,
+  .btn-banner-outline,
+  .btn-banner-outline-light,
+  .btn-primary,
+  .btn-outline,
+  .btn-gold {
+    width: 100% !important;
+  }
+
+  /* Booking Modal Mobile Adaptation */
+  .booking-modal-box {
+    width: calc(100vw - 24px) !important;
+    max-height: calc(100vh - 24px) !important;
+    overflow-y: auto !important;
+    padding: 1.75rem 1.25rem !important;
+    margin: 12px auto !important;
+  }
+
+  .form-row,
+  .studio-row-2col {
+    grid-template-columns: 1fr !important;
+    gap: 1.15rem !important;
+  }
+
+  .contact-info-card,
+  .contact-form-card {
+    padding: 1.75rem 1.25rem !important;
+  }
+
+  /* Footer Adaptation */
+  .footer-top {
+    grid-template-columns: 1fr !important;
+    gap: 2rem !important;
+    text-align: center !important;
+  }
+
+  .footer-social-links {
+    justify-content: center !important;
+  }
+
+  .footer-logo-img {
+    max-width: 200px !important;
+    margin: 0 auto !important;
+  }
+
+  /* WhatsApp Floating Button */
+  .floating-whatsapp {
+    bottom: 16px !important;
+    right: 16px !important;
+    width: 48px !important;
+    height: 48px !important;
+  }
+  .whatsapp-tooltip {
+    display: none !important;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   5. Ultra-Narrow Mobile Devices (320px to 360px)
+   -------------------------------------------------------------------------- */
+@media (max-width: 360px) {
+  .container {
+    padding-left: 14px !important;
+    padding-right: 14px !important;
+  }
+
+  .nav-container {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+  .header-logo-link {
+    max-width: 135px !important;
+    flex-shrink: 1 !important;
+  }
+
+  .header-logo-img {
+    max-width: 130px !important;
+    height: 36px !important;
+  }
+
+  .header-actions {
+    gap: 0.35rem !important;
+  }
+
+  .btn-header-primary {
+    padding: 0.4rem 0.65rem !important;
+    font-size: 0.62rem !important;
+    letter-spacing: 0.05em !important;
+  }
+
+  .mobile-toggle {
+    width: 34px !important;
+    height: 34px !important;
+    padding: 2px !important;
+  }
+
+  .eyebrow,
+  .banner-eyebrow-tag,
+  .editorial-eyebrow {
+    font-size: 0.62rem !important;
+    letter-spacing: 0.16em !important;
+  }
+
+  .instagram-feed-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  .about-stats-minimal-grid,
+  .home-about-stats-strip {
+    grid-template-columns: 1fr !important;
+    text-align: center !important;
+  }
+
+  .mobile-nav {
+    width: 100% !important;
+    padding: 1.5rem 1rem !important;
+  }
+
+  .hero-banner-arrow {
+    width: 32px !important;
+    height: 32px !important;
+  }
+  .hero-banner-arrow-left {
+    left: 4px !important;
+  }
+  .hero-banner-arrow-right {
+    right: 4px !important;
+  }
+}
+
+
+
 
 
 
