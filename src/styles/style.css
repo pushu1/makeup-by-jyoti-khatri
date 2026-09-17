@@ -322,20 +322,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .header-logo-img {
-  height: 84px;
-  max-height: 84px;
+  height: 54px;
   width: auto;
-  max-width: 260px;
+  max-width: 220px;
   object-fit: contain;
-  transform: scale(1.15);
+  transform: scale(1.7);
   transform-origin: left center;
   transition: all var(--transition-normal);
 }
 
 .header.scrolled .header-logo-img {
-  height: 66px;
-  max-height: 66px;
-  transform: scale(1.1);
+  height: 44px;
+  width: auto;
+  max-width: 190px;
+  transform: scale(1.55);
+  transform-origin: left center;
 }
 
 .header-logo-fallback {
@@ -545,11 +546,11 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mobile-nav-logo-img {
-  height: 64px;
+  height: 48px;
   width: auto;
-  max-width: 220px;
+  max-width: 190px;
   object-fit: contain;
-  transform: scale(1.12);
+  transform: scale(1.65);
   transform-origin: left center;
 }
 
@@ -4316,12 +4317,14 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .footer-logo-img {
-  height: 98px;
+  height: 76px;
   width: auto;
-  max-width: 360px;
+  max-width: 250px;
   object-fit: contain;
   display: block;
   filter: brightness(0) invert(1);
+  transform: scale(1.7);
+  transform-origin: left center;
 }
 
 .footer-brand-desc {
@@ -14035,9 +14038,11 @@ h1 {
     font-size: 0.74rem;
   }
   .header-logo-img {
-    max-width: 210px;
-    height: 68px;
-    transform: scale(1.05);
+    width: 128px;
+    max-width: 130px;
+    height: auto;
+    max-height: 52px;
+    transform: none;
   }
   .services-occasion-grid,
   .process-timeline-grid,
@@ -14061,13 +14066,18 @@ h1 {
     display: flex !important;
   }
   .header-logo-img {
-    max-width: 190px;
-    height: 54px;
-    transform: none;
+    height: 48px;
+    width: auto;
+    max-width: 180px;
+    transform: scale(1.6);
+    transform-origin: left center;
   }
   .header.scrolled .header-logo-img {
-    height: 46px;
-    transform: none;
+    height: 42px;
+    width: auto;
+    max-width: 160px;
+    transform: scale(1.48);
+    transform-origin: left center;
   }
   
   /* Hero Slider Container Adaptation */
@@ -14334,11 +14344,18 @@ h1 {
     height: 56px;
   }
   .header-logo-img {
-    max-width: 150px;
-    height: 42px;
+    height: 40px;
+    width: auto;
+    max-width: 160px;
+    transform: scale(1.52);
+    transform-origin: left center;
   }
   .header.scrolled .header-logo-img {
-    height: 38px;
+    height: 36px;
+    width: auto;
+    max-width: 140px;
+    transform: scale(1.42);
+    transform-origin: left center;
   }
   .social-icon-btn {
     display: none !important;
@@ -14509,8 +14526,12 @@ h1 {
   }
 
   .footer-logo-img {
+    height: 60px !important;
+    width: auto !important;
     max-width: 200px !important;
-    margin: 0 auto !important;
+    transform: scale(1.52) !important;
+    transform-origin: center center !important;
+    margin: 0 auto 0.5rem auto !important;
   }
 
   /* WhatsApp Floating Button */
@@ -14540,13 +14561,16 @@ h1 {
   }
 
   .header-logo-link {
-    max-width: 135px !important;
+    max-width: 125px !important;
     flex-shrink: 1 !important;
   }
 
   .header-logo-img {
-    max-width: 130px !important;
-    height: 36px !important;
+    height: 34px !important;
+    width: auto !important;
+    max-width: 140px !important;
+    transform: scale(1.45) !important;
+    transform-origin: left center !important;
   }
 
   .header-actions {
