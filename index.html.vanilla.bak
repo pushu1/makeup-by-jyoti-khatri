@@ -15,7 +15,7 @@
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Makeup by Jyoti Khatri | Luxury Bridal & Beauty Artistry" />
   <meta property="og:description" content="Enhancing Your Beauty, Creating Your Signature Look. Luxury bridal & occasion makeup by Jyoti Khatri." />
-  <meta property="og:image" content="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1200&auto=format&fit=crop" />
+  <meta property="og:image" content="https://images.unsplash.com/photo-jyotikhatri6.png?q=80&w=1200&auto=format&fit=crop" />
 
   <!-- Google Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -121,7 +121,7 @@
             
             <div class="hero-image-frame">
               <img 
-                src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1200&auto=format&fit=crop" 
+                src="https://images.unsplash.com/photo-jyotikhatri6.png?q=80&w=1200&auto=format&fit=crop" 
                 alt="Luxury Indian Bridal Makeup Portrait by Jyoti Khatri" 
                 loading="eager"
               />
@@ -456,7 +456,7 @@
         <div class="gallery-grid" id="gallery-grid">
           <!-- Item 1: Bridal -->
           <div class="gallery-item portrait" data-category="bridal">
-            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1200&auto=format&fit=crop" alt="Royal Crimson Heritage Bride" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-jyotikhatri6.png?q=80&w=1200&auto=format&fit=crop" alt="Royal Crimson Heritage Bride" loading="lazy" />
             <div class="gallery-overlay">
               <span class="gallery-category-tag">Bridal</span>
               <h4 class="gallery-title">Royal Crimson Heritage Bride</h4>
@@ -713,7 +713,7 @@
 
         <div class="instagram-grid">
           <div class="instagram-item">
-            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=600&auto=format&fit=crop" alt="Bridal Glamour Reel" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-jyotikhatri6.png?q=80&w=600&auto=format&fit=crop" alt="Bridal Glamour Reel" loading="lazy" />
             <a href="https://instagram.com/makeupbyjyotikhatri" target="_blank" rel="noopener noreferrer" class="instagram-overlay" aria-label="View on Instagram">
               <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
             </a>
@@ -777,7 +777,7 @@
             </div>
           </div>
           <div class="cta-image-box">
-            <img src="https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1200&auto=format&fit=crop" alt="Indian Bridal Beauty by Jyoti Khatri" loading="lazy" />
+            <img src="https://images.unsplash.com/photo-jyotikhatri6.png?q=80&w=1200&auto=format&fit=crop" alt="Indian Bridal Beauty by Jyoti Khatri" loading="lazy" />
           </div>
         </div>
       </div>

@@ -156,7 +156,7 @@ const SITE_CONFIG = {
       category: "bridal",
       title: "Royal Crimson Heritage Bride",
       subtitle: "Traditional North Indian Bridal Styling",
-      image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=1200&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-jyotikhatri6.png?q=80&w=1200&auto=format&fit=crop",
       aspect: "portrait"
     },
     {
@@ -269,7 +269,7 @@ const SITE_CONFIG = {
 
   instagramGrid: [
     {
-      image: "https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?q=80&w=600&auto=format&fit=crop",
+      image: "https://images.unsplash.com/photo-jyotikhatri6.png?q=80&w=600&auto=format&fit=crop",
       alt: "Bridal Glamour Reel"
     },
     {
