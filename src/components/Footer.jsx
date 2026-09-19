@@ -110,9 +110,6 @@ export default function Footer({ onOpenBooking }) {
 
         <div className="footer-bottom">
           <div>&copy; 2026 {brand.name}. All Rights Reserved.</div>
-          <div style={{ color: 'var(--text-muted)', fontSize: '0.78rem' }}>
-            Editorial Luxury Bridal Makeup Website &bull; Designed &amp; Crafted for Excellence
-          </div>
         </div>
       </div>
     </footer>

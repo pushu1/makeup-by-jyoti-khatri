@@ -278,7 +278,6 @@ export default function Hero({ onOpenBooking }) {
               className={`hero-banner-indicator ${isActive ? 'active' : ''}`}
               onClick={() => goToSlide(idx)}
             >
-              <span className="indicator-num">0{idx + 1}</span>
               <span className="indicator-track">
                 <span className="indicator-fill"></span>
               </span>

@@ -13,6 +13,23 @@ export default function Bridal({ onOpenBooking }) {
   const [activeHotspot, setActiveHotspot] = useState(bridal.details.hotspots[0]);
   const [storyIndex, setStoryIndex] = useState(0);
   const [openFaq, setOpenFaq] = useState(null);
+  const [heroParallax, setHeroParallax] = useState({ imgX: 0, imgY: 0, textX: 0, textY: 0 });
+
+  // Subtle Mouse Micro-Parallax for Hero (Desktop Only)
+  const handleHeroMouseMove = (e) => {
+    if (window.innerWidth < 1024) return;
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const moveX = (clientX / innerWidth - 0.5) * 2;
+    const moveY = (clientY / innerHeight - 0.5) * 2;
+
+    setHeroParallax({
+      imgX: moveX * 5,
+      imgY: moveY * 5,
+      textX: -moveX * 2,
+      textY: -moveY * 2
+    });
+  };
 
   // Section Observer for Entrance Transitions
   const pageRef = useRef(null);
@@ -91,26 +108,38 @@ export default function Bridal({ onOpenBooking }) {
       {/* --------------------------------------------------------------------------
          SECTION 1 — CINEMATIC BRIDAL HERO
          -------------------------------------------------------------------------- */}
-      <section className="bridal-hero-fullscreen bridal-editorial-section">
+      <section
+        className="bridal-hero-fullscreen bridal-editorial-section"
+        onMouseMove={handleHeroMouseMove}
+      >
         <div className="hero-bg-media">
           <img
             src={bridal.hero.backgroundImage}
             alt="Cinematic Indian Bridal Makeup by Jyoti Khatri"
             className="hero-bg-img"
+            style={{
+              transform: `scale(1) translate(${heroParallax.imgX}px, ${heroParallax.imgY}px)`
+            }}
           />
           <div className="hero-dark-overlay"></div>
         </div>
 
         <div className="hero-vertical-tag">{bridal.hero.sideTag}</div>
 
-        <div className="hero-content-center">
+        <div
+          className="hero-content-wrapper"
+          style={{
+            transform: `translate(${heroParallax.textX}px, ${heroParallax.textY}px)`
+          }}
+        >
           <span className="hero-small-label">{bridal.hero.smallText}</span>
-          <div className="hero-vertical-line"></div>
+
           <h1 className="hero-editorial-title">
-            Your Day.<br />
-            Your Story.<br />
-            <span>Your Signature Look.</span>
+            <span className="hero-line-masked hero-line-1">Your Day.</span>
+            <span className="hero-line-masked hero-line-2">Your Story.</span>
+            <span className="hero-line-signature">Your Signature Look.</span>
           </h1>
+
           <p className="hero-handwritten">{bridal.hero.handwritten}</p>
 
           <div className="hero-actions-row">
@@ -119,7 +148,8 @@ export default function Bridal({ onOpenBooking }) {
               className="btn btn-hero-gold"
               onClick={() => onOpenBooking('Bridal Makeup')}
             >
-              BOOK YOUR BRIDAL LOOK
+              <span className="btn-text">BOOK YOUR BRIDAL LOOK</span>
+              <span className="btn-shine"></span>
             </button>
           </div>
         </div>
@@ -386,16 +416,20 @@ export default function Bridal({ onOpenBooking }) {
           <div className="hotspot-interactive-container">
             <img src={bridal.details.image} alt="Bridal Detail Hotspots" className="hotspot-main-img" />
 
-            {/* HOTSPOT PINS */}
+            {/* HOTSPOT PINS OVERLAYING IMAGE */}
             {bridal.details.hotspots.map((hs) => (
               <div
                 key={hs.id}
-                className={`hotspot-pin ${activeHotspot.id === hs.id ? 'active' : ''}`}
+                className={`hotspot-pin pin-${hs.id} align-${hs.align || 'right'} ${activeHotspot?.id === hs.id ? 'active' : ''}`}
                 style={{ top: hs.top, left: hs.left }}
                 onClick={() => setActiveHotspot(hs)}
                 onMouseEnter={() => setActiveHotspot(hs)}
               >
-                <span className="pin-pulse"></span>
+                <div className="pin-dot">
+                  <span className="dot-center"></span>
+                  <span className="dot-ring"></span>
+                  <span className="dot-pulse"></span>
+                </div>
                 <span className="pin-label">{hs.label}</span>
               </div>
             ))}

@@ -61,7 +61,7 @@ export default function Contact({ onSubmitSuccess }) {
         message: ''
       });
     } else {
-      setSubmitError(result.error || 'Failed to send enquiry. Please try again.');
+      setSubmitError(result.error || 'Something went wrong while sending your enquiry. Please try again or contact us directly.');
     }
   };
 

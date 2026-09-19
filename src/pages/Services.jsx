@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { contentConfig } from '../data/contentConfig';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 
@@ -34,6 +34,152 @@ export default function Services({ onOpenBooking }) {
   const custom = sp.customSection || {};
   const faqs = sp.faqs || [];
   const finalCTA = sp.finalCTA || {};
+
+  // Section 4 Complexion Guide Editorial Reveal
+  const [isFinishVisible, setIsFinishVisible] = useState(false);
+  const finishSectionRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsFinishVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    if (finishSectionRef.current) {
+      observer.observe(finishSectionRef.current);
+    }
+
+    const failsafe = setTimeout(() => {
+      setIsFinishVisible(true);
+    }, 1200);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(failsafe);
+    };
+  }, []);
+
+  // Section 6 Our Process Scroll-Driven Story Progression
+  const [activeStepIndex, setActiveStepIndex] = useState(0);
+  const journeyOuterRef = useRef(null);
+
+  useEffect(() => {
+    let animationFrameId;
+
+    const updateJourneyScroll = () => {
+      if (!journeyOuterRef.current) return;
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      const rect = journeyOuterRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      const totalDistance = rect.height - windowHeight;
+
+      if (totalDistance <= 0) return;
+
+      const scrolled = -rect.top;
+      let progress = scrolled / totalDistance;
+      progress = Math.max(0, Math.min(1, progress));
+
+      const stepIndex = Math.min(4, Math.floor(progress * 5));
+      setActiveStepIndex(stepIndex);
+    };
+
+    const handleScroll = () => {
+      animationFrameId = requestAnimationFrame(updateJourneyScroll);
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    updateJourneyScroll();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  // Cinematic CTA IntersectionObserver logic
+  const [isCustomCtaVisible, setIsCustomCtaVisible] = useState(false);
+  const customCtaRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsCustomCtaVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    if (customCtaRef.current) {
+      observer.observe(customCtaRef.current);
+    }
+
+    const failsafe = setTimeout(() => {
+      setIsCustomCtaVisible(true);
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(failsafe);
+    };
+  }, []);
+
+  const headingWords = (custom.heading || 'Need Something More Personal?').split(' ');
+
+  // Section 9 Final CTA Cinematic Reveal & Parallax
+  const [isFinalCtaVisible, setIsFinalCtaVisible] = useState(false);
+  const finalCtaRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsFinalCtaVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    if (finalCtaRef.current) {
+      observer.observe(finalCtaRef.current);
+    }
+
+    const failsafe = setTimeout(() => {
+      setIsFinalCtaVisible(true);
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(failsafe);
+    };
+  }, []);
+
+  const [parallaxPos, setParallaxPos] = useState({ x: 0, y: 0 });
+
+  const handleCtaMouseMove = (e) => {
+    if (!finalCtaRef.current) return;
+    if (window.matchMedia('(pointer: coarse)').matches) return;
+    const rect = finalCtaRef.current.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    const moveX = ((e.clientX - centerX) / (rect.width / 2)) * 5;
+    const moveY = ((e.clientY - centerY) / (rect.height / 2)) * 5;
+    setParallaxPos({ x: moveX, y: moveY });
+  };
+
+  const handleCtaMouseLeave = () => {
+    setParallaxPos({ x: 0, y: 0 });
+  };
+
+  const finalHeadingWords = (finalCTA.heading || "Let's Create Your Look.").split(' ');
 
   return (
     <div className="services-page-redesign">
@@ -181,7 +327,10 @@ export default function Services({ onOpenBooking }) {
       </section>
 
       {/* SECTION 4: FIND YOUR FINISH */}
-      <section className="services-finish-section">
+      <section
+        ref={finishSectionRef}
+        className={`services-finish-section ${isFinishVisible ? 'is-visible' : ''}`}
+      >
         <div className="container">
           <div className="section-header-editorial text-center">
             <span className="editorial-eyebrow">COMPLEXION GUIDE</span>
@@ -193,7 +342,7 @@ export default function Services({ onOpenBooking }) {
           <div className="finish-comparison-grid">
             {/* HD MAKEUP */}
             {finishComp.hd && (
-              <div className="finish-card">
+              <div className="finish-card finish-card-hd">
                 <div className="finish-card-header">
                   <span className="finish-badge">HIGH DEFINITION</span>
                   <h3 className="finish-title">{finishComp.hd.title}</h3>
@@ -201,8 +350,9 @@ export default function Services({ onOpenBooking }) {
                 </div>
                 <ul className="finish-points">
                   {finishComp.hd.points.map((pt, i) => (
-                    <li key={i}>
+                    <li key={i} className="finish-point-row">
                       <svg
+                        className="check-icon"
                         width="18"
                         height="18"
                         viewBox="0 0 24 24"
@@ -212,7 +362,7 @@ export default function Services({ onOpenBooking }) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span>{pt}</span>
+                      <span className="point-text">{pt}</span>
                     </li>
                   ))}
                 </ul>
@@ -221,7 +371,7 @@ export default function Services({ onOpenBooking }) {
 
             {/* AIRBRUSH MAKEUP */}
             {finishComp.airbrush && (
-              <div className="finish-card finish-card-highlighted">
+              <div className="finish-card finish-card-airbrush finish-card-highlighted">
                 <div className="finish-card-header">
                   <span className="finish-badge gold">MICRO-MIST VEIL</span>
                   <h3 className="finish-title">{finishComp.airbrush.title}</h3>
@@ -229,8 +379,9 @@ export default function Services({ onOpenBooking }) {
                 </div>
                 <ul className="finish-points">
                   {finishComp.airbrush.points.map((pt, i) => (
-                    <li key={i}>
+                    <li key={i} className="finish-point-row">
                       <svg
+                        className="check-icon"
                         width="18"
                         height="18"
                         viewBox="0 0 24 24"
@@ -240,7 +391,7 @@ export default function Services({ onOpenBooking }) {
                       >
                         <polyline points="20 6 9 17 4 12" />
                       </svg>
-                      <span>{pt}</span>
+                      <span className="point-text">{pt}</span>
                     </li>
                   ))}
                 </ul>
@@ -322,46 +473,135 @@ export default function Services({ onOpenBooking }) {
         </div>
       </section>
 
-      {/* SECTION 6: WHAT'S INCLUDED (SERVICE JOURNEY) */}
-      <section className="services-journey-section">
-        <div className="container">
-          <div className="section-header-editorial text-center">
-            <span className="editorial-eyebrow">OUR PROCESS</span>
-            <h2 className="editorial-title">{journey.heading}</h2>
-            <p className="editorial-subtitle">{journey.subtitle}</p>
-            <div className="gold-divider-center"></div>
-          </div>
+      {/* SECTION 6: WHAT'S INCLUDED (SERVICE JOURNEY - SCROLL-DRIVEN TIMELINE) */}
+      <div ref={journeyOuterRef} className="services-journey-outer-container">
+        <section className="services-journey-sticky-viewport">
+          <div className="container">
+            <div className="section-header-editorial text-center">
+              <span className="editorial-eyebrow">OUR PROCESS</span>
+              <h2 className="editorial-title">{journey.heading}</h2>
+              <p className="editorial-subtitle">{journey.subtitle}</p>
+              <div className="gold-divider-center"></div>
+            </div>
 
-          <div className="journey-timeline">
-            <div className="journey-line"></div>
-            <div className="journey-steps-grid">
-              {journey.steps &&
-                journey.steps.map((step) => (
-                  <div key={step.num} className="journey-step-item">
-                    <div className="journey-step-node">
-                      <span>{step.num}</span>
-                    </div>
-                    <h3 className="journey-step-title">{step.title}</h3>
-                    <p className="journey-step-desc">{step.desc}</p>
-                  </div>
-                ))}
+            <div className="journey-interactive-wrapper">
+              {/* Horizontal Timeline Bar with 5 Nodes & Progress Line */}
+              <div className="journey-horizontal-timeline">
+                <div className="journey-track-base"></div>
+                <div
+                  className="journey-track-progress"
+                  style={{ width: `${(activeStepIndex / 4) * 100}%` }}
+                ></div>
+
+                <div className="journey-nodes-row">
+                  {journey.steps &&
+                    journey.steps.map((step, idx) => {
+                      const isActive = idx === activeStepIndex;
+                      const isCompleted = idx < activeStepIndex;
+
+                      return (
+                        <button
+                          key={step.num}
+                          type="button"
+                          className={`journey-node-btn ${isActive ? 'active' : ''} ${
+                            isCompleted ? 'completed' : ''
+                          }`}
+                          onClick={() => setActiveStepIndex(idx)}
+                          aria-label={`Step ${step.num}: ${step.title}`}
+                        >
+                          <span className="node-num">{step.num}</span>
+                          <span className="node-halo"></span>
+                        </button>
+                      );
+                    })}
+                </div>
+              </div>
+
+              {/* Active Step Content Display Card */}
+              <div className="journey-content-card-viewport">
+                {journey.steps &&
+                  journey.steps.map((step, idx) => {
+                    const isActive = idx === activeStepIndex;
+
+                    return (
+                      <div
+                        key={step.num}
+                        className={`journey-step-card ${isActive ? 'active' : ''}`}
+                        aria-hidden={!isActive}
+                      >
+                        <span className="step-card-num">0{idx + 1}</span>
+                        <h3 className="step-card-title">{step.title}</h3>
+                        <p className="step-card-desc">{step.desc}</p>
+                      </div>
+                    );
+                  })}
+              </div>
+
+              {/* Mobile Vertical Timeline Stack */}
+              <div className="journey-mobile-vertical-timeline">
+                <div className="mobile-track-line"></div>
+                <div
+                  className="mobile-track-progress"
+                  style={{ height: `${(activeStepIndex / 4) * 100}%` }}
+                ></div>
+                {journey.steps &&
+                  journey.steps.map((step, idx) => {
+                    const isActive = idx === activeStepIndex;
+                    const isCompleted = idx < activeStepIndex;
+
+                    return (
+                      <div
+                        key={step.num}
+                        className={`mobile-step-item ${isActive ? 'active' : ''} ${
+                          isCompleted ? 'completed' : ''
+                        }`}
+                        onClick={() => setActiveStepIndex(idx)}
+                      >
+                        <div className="mobile-step-node">
+                          <span>{step.num}</span>
+                        </div>
+                        <div className="mobile-step-content">
+                          <h3 className="mobile-step-title">{step.title}</h3>
+                          <p className="mobile-step-desc">{step.desc}</p>
+                        </div>
+                      </div>
+                    );
+                  })}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </div>
 
       {/* SECTION 7: CUSTOM PACKAGES */}
-      <section className="services-custom-section">
+      <section className="services-custom-section" ref={customCtaRef}>
         <div className="container">
-          <div className="custom-experience-card text-center">
-            <span className="editorial-eyebrow">TAILORED BEAUTY</span>
-            <h2 className="custom-title">{custom.heading}</h2>
-            <p className="custom-desc">{custom.description}</p>
+          <div className={`custom-experience-card text-center ${isCustomCtaVisible ? 'is-revealed' : ''}`}>
+            {/* Gold Border Sweep Accent */}
+            <div className="custom-card-border-sweep" aria-hidden="true"></div>
+
+            <span className="editorial-eyebrow gold custom-cta-eyebrow">TAILORED BEAUTY</span>
+            
+            <h2 className="custom-title custom-cta-heading">
+              {headingWords.map((word, idx) => (
+                <span key={idx} className="custom-cta-word-mask">
+                  <span
+                    className="custom-cta-word"
+                    style={{ animationDelay: `${350 + idx * 120}ms` }}
+                  >
+                    {word}{idx < headingWords.length - 1 ? '\u00A0' : ''}
+                  </span>
+                </span>
+              ))}
+            </h2>
+
+            <p className="custom-desc custom-cta-desc">{custom.description}</p>
+
             <button
-              className="btn btn-primary btn-large"
+              className="btn btn-primary btn-large custom-cta-btn"
               onClick={() => onOpenBooking('Custom Bespoke Experience')}
             >
-              {custom.ctaText}
+              <span className="btn-text">{custom.ctaText}</span>
             </button>
           </div>
         </div>
@@ -544,7 +784,15 @@ export default function Services({ onOpenBooking }) {
       </section>
 
       {/* SECTION 9: FINAL CTA */}
-      <section className="services-final-cta-section">
+      <section
+        className={`services-final-cta-section ${isFinalCtaVisible ? 'is-revealed' : ''}`}
+        ref={finalCtaRef}
+        onMouseMove={handleCtaMouseMove}
+        onMouseLeave={handleCtaMouseLeave}
+      >
+        {/* Animated Gold Top Border */}
+        <div className="services-final-cta-top-border" aria-hidden="true"></div>
+
         <div className="services-final-cta-container">
           <div className="services-final-cta-overlay"></div>
           {finalCTA.image && (
@@ -552,24 +800,42 @@ export default function Services({ onOpenBooking }) {
               src={finalCTA.image}
               alt="Jyoti Khatri Makeup"
               className="services-final-cta-bg-img"
+              style={{
+                transform: `scale(${isFinalCtaVisible ? 1 : 1.06}) translate3d(${parallaxPos.x}px, ${parallaxPos.y}px, 0px)`
+              }}
             />
           )}
 
           <div className="services-final-cta-content text-center">
-            <span className="editorial-eyebrow gold">RESERVE YOUR DATE</span>
-            <h2 className="services-final-cta-title">{finalCTA.heading}</h2>
+            <span className="editorial-eyebrow gold services-final-cta-eyebrow">
+              RESERVE YOUR DATE
+            </span>
+
+            <h2 className="services-final-cta-title">
+              {finalHeadingWords.map((word, idx) => (
+                <span key={idx} className="final-cta-word-mask">
+                  <span
+                    className="final-cta-word"
+                    style={{ animationDelay: `${350 + idx * 120}ms` }}
+                  >
+                    {word}{idx < finalHeadingWords.length - 1 ? '\u00A0' : ''}
+                  </span>
+                </span>
+              ))}
+            </h2>
+
             <p className="services-final-cta-subtitle">{finalCTA.subtitle}</p>
 
             <div className="services-final-cta-buttons">
               <button
-                className="btn btn-primary"
+                className="btn btn-primary services-cta-btn-book"
                 onClick={() => onOpenBooking('Appointment Reservation')}
               >
-                {finalCTA.primaryBtnText}
+                <span className="btn-text">{finalCTA.primaryBtnText}</span>
               </button>
 
               <button
-                className="btn btn-whatsapp"
+                className="btn btn-whatsapp services-cta-btn-whatsapp"
                 onClick={handleWhatsAppClick}
               >
                 <svg
@@ -581,7 +847,7 @@ export default function Services({ onOpenBooking }) {
                 >
                   <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413" />
                 </svg>
-                {finalCTA.secondaryBtnText}
+                <span>{finalCTA.secondaryBtnText}</span>
               </button>
             </div>
           </div>

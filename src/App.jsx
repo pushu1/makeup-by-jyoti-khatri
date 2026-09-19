@@ -56,12 +56,13 @@ export default function App() {
   };
 
   const showToast = (brideName) => {
+    const nameStr = brideName && brideName !== 'Bride' ? `, ${brideName}` : '';
     setToastMessage(
-      `Thank you, ${brideName}! Your bridal consultation enquiry has been sent. Jyoti's team will contact you shortly.`
+      `Thank you${nameStr}! Your enquiry has been received. Jyoti Khatri's team will get back to you shortly.`
     );
     setTimeout(() => {
       setToastMessage(null);
-    }, 4500);
+    }, 5000);
   };
 
   return (

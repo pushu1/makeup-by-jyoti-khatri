@@ -8,7 +8,7 @@ export default function About({ onOpenBooking }) {
     <section id="about" className="about-section">
       <div className="container">
         <div className="about-grid">
-          {/* Left Column Portrait of Jyoti */}
+          {/* Left Column Portrait of Jyoti Khatri */}
           <div className="about-visual">
             <div className="about-offset-border"></div>
             <div className="about-image-wrapper">
@@ -38,7 +38,7 @@ export default function About({ onOpenBooking }) {
 
             <div className="about-footer">
               <button className="btn btn-outline" onClick={() => onOpenBooking()}>
-                More About Jyoti
+                More About Jyoti Khatri
               </button>
               <div className="signature-text">{about.signature}</div>
             </div>

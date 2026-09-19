@@ -86,7 +86,7 @@ export default function ServicesDetailRows({ onOpenBooking }) {
         "18+ hours staying power"
       ],
       idealFor: "Destination Weddings, Humid Climates, All-Day Rituals",
-      image: "/images/Post1.jpg",
+      image: "/images/jyotikhatri7.png",
       alt: "Airbrush Makeup Technique",
       cornerClass: "curve-right",
       layoutReversed: true

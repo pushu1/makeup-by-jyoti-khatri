@@ -24,7 +24,7 @@ const SITE_CONFIG = {
     phoneDisplay: "+91 98765 43210 (Placeholder)",
     whatsapp: "+919876543210", // Placeholder
     whatsappDisplay: "+91 98765 43210 (Placeholder)",
-    email: "enquiry@makeupbyjyotikhatri.com", // Placeholder
+    email: "Jyotikhatri2326@gmail.com",
     location: "Studio & On-Location (India & Worldwide)",
     city: "Mumbai / Available Worldwide",
     workingHours: "By Appointment Only • Mon - Sun: 09:00 AM - 07:00 PM"
@@ -39,7 +39,7 @@ const SITE_CONFIG = {
 
   stats: [
     {
-      number: "500+",
+      number: "200+",
       label: "Happy Brides",
       subtext: "Personalized Wedding Looks"
     },
@@ -66,9 +66,9 @@ const SITE_CONFIG = {
     quote: "Makeup is not about changing who you are. It is about enhancing the features that make you uniquely beautiful.",
     paragraphs: [
       "With over seven years of dedicated experience in high-end bridal, fashion, and red-carpet styling, Jyoti Khatri has emerged as a sought-after name for brides seeking contemporary sophistication rooted in timeless grace.",
-      "Every bride carries an individual story and distinct aesthetic. Jyoti's signature approach blends precision skin-prep, featherlight HD application, and customized hair artistry to ensure you feel luminous from the morning rituals to the late-night celebrations."
+      "Every bride carries an individual story and distinct aesthetic. Jyoti Khatri's signature approach blends precision skin-prep, featherlight HD application, and customized hair artistry to ensure you feel luminous from the morning rituals to the late-night celebrations."
     ],
-    signature: "With love, Jyoti",
+    signature: "With love, Jyoti Khatri",
     image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=1000&auto=format&fit=crop",
     imageAlt: "Jyoti Khatri - Luxury Bridal Makeup Artist"
   },
@@ -245,7 +245,7 @@ const SITE_CONFIG = {
       id: "t1",
       name: "Ananya Sharma",
       eventType: "Bridal Makeup • New Delhi",
-      quote: "Jyoti made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments. Everyone couldn't stop praising the natural radiance!",
+      quote: "Jyoti Khatri made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments. Everyone couldn't stop praising the natural radiance!",
       avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=200&auto=format&fit=crop",
       rating: 5
     },
@@ -253,7 +253,7 @@ const SITE_CONFIG = {
       id: "t2",
       name: "Rhea Kapoor",
       eventType: "Destination Wedding & Reception • Udaipur",
-      quote: "Booking Jyoti for all 3 events was the best decision of my wedding planning. From my pastel engagement look to my high-glam reception gown, she created three completely distinct, breathtaking avatars without ever looking overdone.",
+      quote: "Booking Jyoti Khatri for all 3 events was the best decision of my wedding planning. From my pastel engagement look to my high-glam reception gown, she created three completely distinct, breathtaking avatars without ever looking overdone.",
       avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?q=80&w=200&auto=format&fit=crop",
       rating: 5
     },

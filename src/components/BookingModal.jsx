@@ -78,7 +78,7 @@ export default function BookingModal({ isOpen, onClose, preferredService, onSubm
       });
       onClose();
     } else {
-      setSubmitError(result.error || 'Failed to submit booking request. Please try again.');
+      setSubmitError(result.error || 'Something went wrong while sending your enquiry. Please try again or contact us directly.');
     }
   };
 

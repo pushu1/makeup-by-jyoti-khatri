@@ -323,7 +323,7 @@ function initForms() {
       const name = nameInput ? nameInput.value.trim() : 'Bride';
 
       // Realistic feedback
-      showToast(`Thank you, ${name}! Your bridal consultation enquiry has been sent. Jyoti's team will contact you shortly.`);
+      showToast(`Thank you, ${name}! Your bridal consultation enquiry has been sent. Jyoti Khatri's team will contact you shortly.`);
 
       form.reset();
 

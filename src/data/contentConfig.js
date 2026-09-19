@@ -117,7 +117,7 @@ export const contentConfig = {
     whatsapp: "096641 45983",
     whatsappDisplay: "096641 45983",
     whatsappRaw: "919664145983",
-    email: "enquiry@makeupbyjyotikhatri.com",
+    email: "Jyotikhatri2326@gmail.com",
     address: "Hari Nagar, Katariya Choukha, Jodhpur, Rajasthan 342014",
     location: "Hari Nagar, Katariya Choukha, Jodhpur, Rajasthan 342014",
     city: "Jodhpur, Rajasthan 342014",
@@ -133,7 +133,7 @@ export const contentConfig = {
 
   stats: [
     {
-      number: "500+",
+      number: "200+",
       label: "Happy Brides",
       subtext: "Personalized Wedding Looks"
     },
@@ -159,7 +159,7 @@ export const contentConfig = {
     subheading: "Where artistry meets individuality.",
     quote: "Makeup is not about changing who you are. It is about enhancing the features that make you uniquely beautiful.",
     intro: "With over seven years of dedicated experience in high-end bridal, fashion, and red-carpet styling, Jyoti Khatri has emerged as a trusted name for brides seeking contemporary sophistication rooted in timeless grace.",
-    story: "Jyoti's journey began with an innate appreciation for classical Indian aesthetics and couture fashion. Over the years, she has trained with master international beauty educators and refined a signature style that focuses on radiant skin textures, delicate eye enhancement, and seamless harmony with bridal jewelry and attire.",
+    story: "Jyoti Khatri's journey began with an innate appreciation for classical Indian aesthetics and couture fashion. Over the years, she has trained with master international beauty educators and refined a signature style that focuses on radiant skin textures, delicate eye enhancement, and seamless harmony with bridal jewelry and attire.",
     philosophyTitle: "Our Beauty Philosophy",
     philosophyText: "We believe a bride should never feel like a stranger in the mirror. True bridal makeup should preserve the bride's natural individuality while giving her that transcendent, ethereal glow that lasts through emotional rituals and stage spotlights.",
     approachTitle: "The Signature Difference",
@@ -181,7 +181,7 @@ export const contentConfig = {
         desc: "A calm, punctual, and comforting energy on your wedding morning so you can cherish every second."
       }
     ],
-    signature: "With love, Jyoti",
+    signature: "With love, Jyoti Khatri",
     image: "/images/jyotikhatri22.png",
     imageAlt: "Jyoti Khatri - Luxury Bridal Makeup Artist"
   },
@@ -202,10 +202,10 @@ export const contentConfig = {
       editorialNote: "EVERY DETAIL MATTERS."
     },
     note: {
-      eyebrow: "A NOTE FROM JYOTI",
+      eyebrow: "A NOTE FROM JYOTI KHATRI",
       heading: "Your wedding look should feel like you.",
       paragraph: "Every bride brings her own unique energy, personal style, and wedding vision. My role is to listen closely, respect your comfort zone, and apply refined techniques so you look breathtaking while feeling effortlessly like yourself.",
-      signature: "Jyoti",
+      signature: "Jyoti Khatri",
       image: "/images/jyotikhatri11.png"
     },
     faqs: {
@@ -302,11 +302,11 @@ export const contentConfig = {
         "Based in Jodhpur and traveling across India for destination weddings, my passion lies in creating individual beauty narratives for every bride.",
         "From selecting international luxury products (Dior, Charlotte Tilbury, NARS, MAC) to precision mathapatti alignment and dupatta veil draping, every element is curated with devotion."
       ],
-      signature: "Jyoti",
+      signature: "Jyoti Khatri",
       image: "/images/jyotikhatri111.png"
     },
     stats: [
-      { number: "500+", label: "Brides Transformed" },
+      { number: "200+", label: "Brides Transformed" },
       { number: "5.0", label: "Average Rating" },
       { number: "100%", label: "Bespoke Artistry" }
     ],
@@ -519,7 +519,7 @@ export const contentConfig = {
         description: "Ultra-smooth, humidity-proof mist base providing 18+ hours of transfer-resistant perfection. Ideal for destination weddings and long celebrations.",
         highlights: ["MICRO-MIST", "18+ HR HOLD", "WATERPROOF", "VELVET FINISH", "WEIGHTLESS"],
         ctaText: "ENQUIRE FOR AIRBRUSH",
-        image: "/images/Post1.jpg",
+        image: "/images/jyotikhatri7.png",
         imagePosition: "right"
       }
     ],
@@ -695,7 +695,7 @@ export const contentConfig = {
     },
     signature: {
       number: "01",
-      heading: "The Jyoti Bridal Signature",
+      heading: "The Jyoti Khatri Bridal Signature",
       description: "A bridal look created around your features, your personality, your outfit and the feeling you want to carry into every photograph.",
       points: [
         { num: "01", title: "UNDERSTAND", desc: "We begin by understanding your vision." },
@@ -842,42 +842,47 @@ export const contentConfig = {
       image: "/images/jyotikhatri222.png",
       hotspots: [
         {
+          id: "hair",
+          label: "THE HAIR",
+          top: "37.2%",
+          left: "53.7%",
+          align: "right",
+          title: "Artisanal Hair Draping",
+          desc: "Sculpted braids or buns adorned with fresh flora, mathapatti, and secure veil pinning."
+        },
+        {
           id: "eyes",
           label: "THE EYES",
-          top: "32%",
-          left: "48%",
+          top: "26.8%",
+          left: "40.7%",
+          align: "right",
           title: "Intricate Eye Artistry",
           desc: "Smudge-proof 16-hour eyeshadow, seamless blending, and lightweight mink lashes."
         },
         {
           id: "skin",
           label: "THE SKIN",
-          top: "46%",
-          left: "38%",
+          top: "29.8%",
+          left: "43.5%",
+          align: "right",
           title: "Porcelain 4K Skin",
           desc: "Hydration barrier preparation, weightless micro-concealing, and Zero Flashback HD base."
         },
         {
           id: "lips",
           label: "THE LIPS",
-          top: "58%",
-          left: "46%",
+          top: "43.9%",
+          left: "38.9%",
+          align: "left",
           title: "Custom Lip Palette",
           desc: "Long-wearing non-transfer lip contouring customized to your attire and undertone."
         },
         {
-          id: "hair",
-          label: "THE HAIR",
-          top: "22%",
-          left: "62%",
-          title: "Artisanal Hair Draping",
-          desc: "Sculpted braids or buns adorned with fresh flora, mathapatti, and secure veil pinning."
-        },
-        {
           id: "finish",
           label: "THE FINISH",
-          top: "70%",
-          left: "58%",
+          top: "49.8%",
+          left: "38.0%",
+          align: "left",
           title: "Camera-Ready Glow",
           desc: "Targeted dimensional highlight capturing 4K lens clarity from every angle."
         }
@@ -899,7 +904,7 @@ export const contentConfig = {
           name: "Kajal Dhoot",
           location: "Mumbai Grand Convention",
           event: "Sangeet & Wedding",
-          quote: "Jyoti made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments.",
+          quote: "Jyoti Khatri made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments.",
           image: "/images/jyotikhatri1.png",
         },
         {
@@ -1102,15 +1107,15 @@ export const contentConfig = {
       ]
     },
     faceDetails: {
-      heading: "The Face Behind The Look",
+      heading: "Attention To Every Detail",
       subheading: "An interactive breakdown of artistry precision.",
       mainImage: "/images/jyotikhatri1.png",
       labels: [
-        { id: "eyes", title: "THE EYES", detail: "Soft Definition & Mink Lashes", x: "48%", y: "32%" },
-        { id: "skin", title: "THE SKIN", detail: "Luminous Porcelain Base", x: "38%", y: "46%" },
-        { id: "lips", title: "THE LIPS", detail: "Rose Nude Velvet Palette", x: "46%", y: "58%" },
-        { id: "hair", title: "THE HAIR", detail: "Classic Flora Updo", x: "64%", y: "22%" },
-        { id: "details", title: "THE DETAILS", detail: "Hand-finished Mathapatti", x: "60%", y: "68%" }
+        { id: "eyes", title: "THE EYES", detail: "Soft Definition & Mink Lashes", x: "40.5%", y: "20%", align: "left" },
+        { id: "skin", title: "THE SKIN", detail: "Luminous Porcelain Base", x: "47.7%", y: "22.5%", align: "right" },
+        { id: "lips", title: "THE LIPS", detail: "Rose Nude Velvet Palette", x: "43.1%", y: "25.5%", align: "left" },
+        { id: "hair", title: "THE HAIR", detail: "Classic Flora Updo", x: "44.5%", y: "10%", align: "right" },
+        { id: "details", title: "THE DETAILS", detail: "Hand-finished Mathapatti", x: "41.7%", y: "14.9%", align: "left" }
       ]
     },
     transformations: {
@@ -1326,7 +1331,7 @@ export const contentConfig = {
       id: "t1",
       name: "Ananya Sharma",
       eventType: "Bridal Ceremony • New Delhi",
-      quote: "Jyoti made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments. Everyone couldn't stop praising the natural radiance!",
+      quote: "Jyoti Khatri made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments. Everyone couldn't stop praising the natural radiance!",
       avatar: "/images/jyotikhatri222222.png",
       rating: 5,
       featured: true
@@ -1335,7 +1340,7 @@ export const contentConfig = {
       id: "t2",
       name: "Rhea Kapoor",
       eventType: "Destination Wedding & Reception • Udaipur",
-      quote: "Booking Jyoti for all 3 events was the best decision of my wedding planning. From my pastel engagement look to my high-glam reception gown, she created three completely distinct, breathtaking avatars without ever looking overdone.",
+      quote: "Booking Jyoti Khatri for all 3 events was the best decision of my wedding planning. From my pastel engagement look to my high-glam reception gown, she created three completely distinct, breathtaking avatars without ever looking overdone.",
       avatar: "/images/Post2.jpg",
       rating: 5,
       featured: true
@@ -1353,7 +1358,7 @@ export const contentConfig = {
       id: "t4",
       name: "Kavya Singhania",
       eventType: "Royal Palace Wedding • Jaipur",
-      quote: "Finding an artist who understands how to balance heavy traditional Kundan jewelry with modern, featherlight makeup is rare. Jyoti exceeded every expectation. My photography looks straight out of an editorial magazine.",
+      quote: "Finding an artist who understands how to balance heavy traditional Kundan jewelry with modern, featherlight makeup is rare. Jyoti Khatri exceeded every expectation. My photography looks straight out of an editorial magazine.",
       avatar: "/images/jyotikhatri6.png",
       rating: 5,
       featured: false
@@ -1362,7 +1367,7 @@ export const contentConfig = {
       id: "t5",
       name: "Simran Oberoi",
       eventType: "Sunset Beach Wedding • Goa",
-      quote: "The airbrush makeup survived the humid Goa breeze, beach moisture, and hours of dancing without a single crack or smudge. Jyoti's professionalism and warmth are unmatched!",
+      quote: "The airbrush makeup survived the humid Goa breeze, beach moisture, and hours of dancing without a single crack or smudge. Jyoti Khatri's professionalism and warmth are unmatched!",
       avatar: "/images/jyotikhatri5.png",
       rating: 5,
       featured: false
@@ -1371,7 +1376,7 @@ export const contentConfig = {
       id: "t6",
       name: "Isha Deshmukh",
       eventType: "Reception Gala • Bangalore",
-      quote: "Her eye for symmetry and color harmonies is extraordinary. My smoky emerald eye look complemented my velvet lehenga to perfection. Thank you Jyoti for making my wedding week unforgettable!",
+      quote: "Her eye for symmetry and color harmonies is extraordinary. My smoky emerald eye look complemented my velvet lehenga to perfection. Thank you Jyoti Khatri for making my wedding week unforgettable!",
       avatar: "/images/jyotikhatri111111.png",
       rating: 5,
       featured: false
@@ -1438,7 +1443,7 @@ export const contentConfig = {
         eventType: "Engagement & Sangeet",
         location: "Udaipur Palace",
         rating: 5,
-        review: "Booking Jyoti for my multi-day wedding was pure perfection. She understood my vision of soft romantic rose tones that didn't hide my natural skin. I felt weightless and radiant from dawn to midnight.",
+        review: "Booking Jyoti Khatri for my multi-day wedding was pure perfection. She understood my vision of soft romantic rose tones that didn't hide my natural skin. I felt weightless and radiant from dawn to midnight.",
         detail: "14-Hour Dewy Base • Rose Gold Eyes",
         image: "/images/Post2.jpg"
       },
@@ -1474,7 +1479,7 @@ export const contentConfig = {
         eventType: "Sangeet Gala Night",
         location: "Goa Resort",
         rating: 5,
-        review: "The airbrush base survived high humidity, sea breeze, and 6 hours of continuous dancing! Jyoti's calm energy in the dressing suite was the highlight of my wedding morning.",
+        review: "The airbrush base survived high humidity, sea breeze, and 6 hours of continuous dancing! Jyoti Khatri's calm energy in the dressing suite was the highlight of my wedding morning.",
         detail: "Waterproof Airbrush • Smoky Emerald Eyes",
         image: "/images/jyotikhatri5.png"
       },
@@ -1498,7 +1503,7 @@ export const contentConfig = {
         eventType: "BRIDAL MAKEUP",
         location: "JAIPUR",
         rating: 5,
-        quote: "Jyoti made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments.",
+        quote: "Jyoti Khatri made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments.",
         image: "/images/jyotikhatri222222.png"
       },
       {
@@ -1525,7 +1530,7 @@ export const contentConfig = {
         eventType: "HERITAGE WEDDING",
         location: "JODHPUR",
         rating: 5,
-        quote: "Finding an artist who understands how to balance heavy traditional Kundan jewelry with modern, featherlight makeup is rare. Jyoti exceeded every expectation.",
+        quote: "Finding an artist who understands how to balance heavy traditional Kundan jewelry with modern, featherlight makeup is rare. Jyoti Khatri exceeded every expectation.",
         image: "/images/jyotikhatri6.png"
       },
       {
@@ -1534,14 +1539,14 @@ export const contentConfig = {
         eventType: "BEACH WEDDING",
         location: "GOA",
         rating: 5,
-        quote: "The airbrush makeup survived humid coastal weather and hours of dancing without a single crack or smudge. Jyoti's professionalism and warmth are unmatched!",
+        quote: "The airbrush makeup survived humid coastal weather and hours of dancing without a single crack or smudge. Jyoti Khatri's professionalism and warmth are unmatched!",
         image: "/images/jyotikhatri5.png"
       }
     ],
     remembers: [
       {
         word: "CALM",
-        quote: "The whole morning felt so peaceful. Jyoti made everything feel effortless.",
+        quote: "The whole morning felt so peaceful. Jyoti Khatri made everything feel effortless.",
         bride: "Ananya S. • Jaipur Bride",
         image: "/images/jyotikhatri1.png"
       },
@@ -1594,12 +1599,12 @@ export const contentConfig = {
       }
     ],
     statistics: [
-      { number: "500+", label: "Brides" },
+      { number: "200+", label: "Brides" },
       { number: "5.0", label: "Average Rating" },
       { number: "100%", label: "Personalized Experience" }
     ],
     shareCTA: {
-      heading: "Had Your Moment With Jyoti?",
+      heading: "Had Your Moment With Jyoti Khatri?",
       subtitle: "Your words may become part of another bride's inspiration.",
       btnText: "SHARE YOUR EXPERIENCE"
     },

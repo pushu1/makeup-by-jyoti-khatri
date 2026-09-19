@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { contentConfig } from '../data/contentConfig';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
+import StatItem from '../components/StatItem';
 
 export default function About({ onOpenBooking }) {
   const { seo, aboutPage, social } = contentConfig;
@@ -14,6 +15,90 @@ export default function About({ onOpenBooking }) {
   const behindBrushes = aData.behindBrushes || {};
   const stats = aData.stats || [];
   const finalCTA = aData.finalCTA || {};
+
+  const [isStatsVisible, setIsStatsVisible] = useState(false);
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsStatsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    const failsafe = setTimeout(() => {
+      setIsStatsVisible(true);
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(failsafe);
+    };
+  }, []);
+
+  const [isSignatureVisible, setIsSignatureVisible] = useState(false);
+  const signatureRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsSignatureVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    if (signatureRef.current) {
+      observer.observe(signatureRef.current);
+    }
+
+    const failsafe = setTimeout(() => {
+      setIsSignatureVisible(true);
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(failsafe);
+    };
+  }, []);
+
+  const [isCtaVisible, setIsCtaVisible] = useState(false);
+  const ctaRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsCtaVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.18, rootMargin: '0px 0px -40px 0px' }
+    );
+
+    if (ctaRef.current) {
+      observer.observe(ctaRef.current);
+    }
+
+    const failsafe = setTimeout(() => {
+      setIsCtaVisible(true);
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(failsafe);
+    };
+  }, []);
 
   const handleWhatsAppClick = () => {
     window.open(social.whatsappUrl, '_blank', 'noopener,noreferrer');
@@ -99,7 +184,7 @@ export default function About({ onOpenBooking }) {
         <div className="container">
           <div className="section-header-editorial text-center mb-5">
             <span className="editorial-eyebrow">PHILOSOPHY</span>
-            <h2 className="editorial-title">The Jyoti Approach</h2>
+            <h2 className="editorial-title">The Jyoti Khatri Approach</h2>
             <div className="gold-divider-center"></div>
           </div>
 
@@ -120,22 +205,27 @@ export default function About({ onOpenBooking }) {
         </div>
       </section>
 
-      {/* 6. MY SIGNATURE SECTION (DARK ESPRESSO BACKGROUND) */}
-      <section className="about-signature-section">
+      {/* 6. MY SIGNATURE SECTION (DARK ESPRESSO BACKGROUND - FULLY CENTERED WITH SEQUENTIAL SCROLL ANIMATION) */}
+      <section
+        ref={signatureRef}
+        className={`about-signature-section ${isSignatureVisible ? 'is-visible' : ''}`}
+      >
         <div className="container text-center">
-          <span className="editorial-eyebrow gold">OUR ESSENCE</span>
-          <h2 className="about-signature-heading">{signatureSec.heading}</h2>
+          <span className="editorial-eyebrow gold sig-anim-eyebrow">OUR ESSENCE</span>
+          <h2 className="about-signature-heading sig-anim-heading">{signatureSec.heading}</h2>
           
           <div className="about-signature-words-row">
             {signatureSec.words && signatureSec.words.map((word, idx) => (
               <React.Fragment key={word}>
-                <span className="signature-word">{word}</span>
-                {idx < signatureSec.words.length - 1 && <span className="word-dot">•</span>}
+                <span className={`signature-word sig-anim-word-${idx + 1}`}>{word}</span>
+                {idx < signatureSec.words.length - 1 && (
+                  <span className={`word-dot sig-anim-dot-${idx + 1}`}>•</span>
+                )}
               </React.Fragment>
             ))}
           </div>
 
-          <p className="about-signature-description">{signatureSec.description}</p>
+          <p className="about-signature-description sig-anim-desc">{signatureSec.description}</p>
         </div>
       </section>
 
@@ -170,35 +260,44 @@ export default function About({ onOpenBooking }) {
       </section>
 
       {/* 8. STATS SECTION */}
-      <section className="about-stats-section">
+      <section
+        ref={statsRef}
+        className={`about-stats-section ${isStatsVisible ? 'is-visible' : ''}`}
+      >
         <div className="container">
           <div className="about-stats-minimal-grid">
             {stats.map((st, idx) => (
-              <div key={idx} className="about-stat-item">
-                <span className="stat-number">{st.number}</span>
-                <span className="stat-label">{st.label}</span>
-              </div>
+              <StatItem
+                key={idx}
+                numberStr={st.number}
+                labelStr={st.label}
+                index={idx}
+                isSectionVisible={isStatsVisible}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* 9. FINAL CTA SECTION */}
-      <section className="about-final-cta-section">
+      {/* 9. FINAL CTA SECTION (PERFECTLY CENTERED WITH SEQUENTIAL SCROLL ANIMATION & BUTTON HOVER) */}
+      <section
+        ref={ctaRef}
+        className={`about-final-cta-section ${isCtaVisible ? 'is-visible' : ''}`}
+      >
         <div className="container text-center">
-          <span className="editorial-eyebrow gold">RESERVE YOUR MOMENT</span>
-          <h2 className="about-final-cta-title">{finalCTA.title}</h2>
-          <p className="about-final-cta-subtitle">{finalCTA.subtitle}</p>
+          <span className="editorial-eyebrow gold cta-anim-eyebrow">RESERVE YOUR MOMENT</span>
+          <h2 className="about-final-cta-title cta-anim-title">{finalCTA.title}</h2>
+          <p className="about-final-cta-subtitle cta-anim-subtitle">{finalCTA.subtitle}</p>
 
-          <div className="about-final-cta-buttons">
+          <div className="about-final-cta-buttons cta-anim-buttons">
             <button
-              className="btn btn-primary"
+              className="btn btn-primary cta-btn-book"
               onClick={() => onOpenBooking && onOpenBooking('About Page Appointment')}
             >
               {finalCTA.buttonText}
             </button>
             <button
-              className="btn btn-whatsapp"
+              className="btn btn-whatsapp cta-btn-whatsapp"
               onClick={handleWhatsAppClick}
             >
               START A CONVERSATION

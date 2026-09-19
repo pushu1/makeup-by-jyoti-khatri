@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 
 export default function HomeWhyChooseSection({ onOpenBooking }) {
   const [visible, setVisible] = useState(false);
+  const [parallax, setParallax] = useState({ b1Y: 0, b2Y: 0, b3Y: 0, b4Y: 0 });
   const sectionRef = useRef(null);
 
   // High-resolution beauty & makeup assets
@@ -44,6 +45,49 @@ export default function HomeWhyChooseSection({ onOpenBooking }) {
     return () => {
       clearTimeout(fallbackTimer);
       observer.disconnect();
+    };
+  }, []);
+
+  // Subtle Parallax Scroll Displacement for Desktop Viewports
+  useEffect(() => {
+    let animationFrameId;
+
+    const handleScroll = () => {
+      if (!sectionRef.current || window.innerWidth < 1024) {
+        setParallax({ b1Y: 0, b2Y: 0, b3Y: 0, b4Y: 0 });
+        return;
+      }
+
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+
+      if (rect.top <= windowHeight && rect.bottom >= 0) {
+        const sectionCenter = rect.top + rect.height / 2;
+        const viewportCenter = windowHeight / 2;
+        const delta = Math.max(-1, Math.min(1, (viewportCenter - sectionCenter) / (windowHeight * 0.8)));
+
+        setParallax({
+          b1Y: delta * -12,
+          b2Y: delta * 6,
+          b3Y: delta * 10,
+          b4Y: delta * -6
+        });
+      }
+    };
+
+    const onScroll = () => {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    handleScroll();
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
     };
   }, []);
 
@@ -94,10 +138,10 @@ export default function HomeWhyChooseSection({ onOpenBooking }) {
 
           {/* 4 EDITORIAL COLUMNS / BLOCKS */}
           <div className="why-choose-editorial-grid">
-            {/* BLOCK 01 — LEFT (Stagger: 100ms) */}
+            {/* BLOCK 01 — LEFT (Card 1) */}
             <div
               className={`editorial-block block-1 ${visible ? 'editorial-block-visible' : ''}`}
-              style={{ '--card-delay': '100ms', transitionDelay: '100ms' }}
+              style={{ '--parallax-y': `${parallax.b1Y}px` }}
             >
               <div className="editorial-img-frame frame-1">
                 <img
@@ -116,10 +160,10 @@ export default function HomeWhyChooseSection({ onOpenBooking }) {
               </div>
             </div>
 
-            {/* BLOCK 02 — CENTER LEFT (Stagger: 250ms) */}
+            {/* BLOCK 02 — CENTER LEFT */}
             <div
               className={`editorial-block block-2 ${visible ? 'editorial-block-visible' : ''}`}
-              style={{ '--card-delay': '250ms', transitionDelay: '250ms' }}
+              style={{ '--parallax-y': `${parallax.b2Y}px` }}
             >
               <div className="editorial-text-box">
                 <h3 className="editorial-title">
@@ -138,10 +182,10 @@ export default function HomeWhyChooseSection({ onOpenBooking }) {
               </div>
             </div>
 
-            {/* BLOCK 03 — CENTER RIGHT (Stagger: 400ms) */}
+            {/* BLOCK 03 — CENTER RIGHT (Card 2) */}
             <div
               className={`editorial-block block-3 ${visible ? 'editorial-block-visible' : ''}`}
-              style={{ '--card-delay': '400ms', transitionDelay: '400ms' }}
+              style={{ '--parallax-y': `${parallax.b3Y}px` }}
             >
               <div className="editorial-img-frame frame-3">
                 <img
@@ -160,10 +204,10 @@ export default function HomeWhyChooseSection({ onOpenBooking }) {
               </div>
             </div>
 
-            {/* BLOCK 04 — RIGHT (Stagger: 550ms) */}
+            {/* BLOCK 04 — RIGHT */}
             <div
               className={`editorial-block block-4 ${visible ? 'editorial-block-visible' : ''}`}
-              style={{ '--card-delay': '550ms', transitionDelay: '550ms' }}
+              style={{ '--parallax-y': `${parallax.b4Y}px` }}
             >
               <div className="editorial-text-box">
                 <h3 className="editorial-title">

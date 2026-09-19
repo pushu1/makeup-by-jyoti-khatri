@@ -90,7 +90,7 @@ export default function HomeAboutSection({ onOpenBooking }) {
             {/* Footer CTAs & Signature */}
             <div className="home-about-actions">
               <Link to="/about" className="btn btn-primary">
-                More About Jyoti
+                More About Jyoti Khatri
               </Link>
               <button className="btn btn-outline" onClick={() => onOpenBooking()}>
                 Book Consultation

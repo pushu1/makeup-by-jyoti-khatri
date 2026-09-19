@@ -1,20 +1,53 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { contentConfig } from '../data/contentConfig';
+import StatItem from './StatItem';
 
 export default function Stats() {
   const { stats } = contentConfig;
+  const [isStatsVisible, setIsStatsVisible] = useState(false);
+  const statsRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsStatsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -30px 0px' }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    const failsafe = setTimeout(() => {
+      setIsStatsVisible(true);
+    }, 1500);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(failsafe);
+    };
+  }, []);
 
   return (
-    <section className="stats-section" aria-label="Key Milestones and Statistics">
+    <section
+      ref={statsRef}
+      className={`about-stats-section stats-section ${isStatsVisible ? 'is-visible' : ''}`}
+      aria-label="Key Milestones and Statistics"
+    >
       <div className="container">
-        <div className="stats-grid">
+        <div className="about-stats-minimal-grid stats-grid">
           {stats.map((stat, idx) => (
-            <div key={idx} className="stat-item">
-              <div className="stat-number">{stat.number}</div>
-              <div className="stat-label">{stat.label}</div>
-              <div className="stat-subtext">{stat.subtext}</div>
-              <span className="placeholder-tag">(Placeholder)</span>
-            </div>
+            <StatItem
+              key={idx}
+              numberStr={stat.number}
+              labelStr={stat.label}
+              index={idx}
+              isSectionVisible={isStatsVisible}
+            />
           ))}
         </div>
       </div>

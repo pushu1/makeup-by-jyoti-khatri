@@ -9,7 +9,7 @@ export default function HomeTestimonialsSection({ onOpenBooking }) {
   const slides = [
     {
       id: 1,
-      quote: "It was one of my best experience. My all the looks were very different and amazing. Everybody liked my looks and makeover. I would definitely suggest Jyoti if you want some different and best makeovers.",
+      quote: "It was one of my best experience. My all the looks were very different and amazing. Everybody liked my looks and makeover. I would definitely suggest Jyoti Khatri if you want some different and best makeovers.",
       author: "Kajal Dhoot",
       images: {
         img1: "/images/jyotikhatri5.png", // Dominant portrait
@@ -19,7 +19,7 @@ export default function HomeTestimonialsSection({ onOpenBooking }) {
     },
     {
       id: 2,
-      quote: "Jyoti made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments.",
+      quote: "Jyoti Khatri made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments.",
       author: "Ananya Sharma",
       images: {
         img1: "/images/jyotikhatri1111.png",

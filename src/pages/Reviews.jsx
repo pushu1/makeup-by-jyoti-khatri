@@ -97,7 +97,7 @@ export default function Reviews({ onOpenBooking, onOpenLightbox }) {
         setFormData({ name: '', eventType: '', rating: '5', review: '' });
       }, 3500);
     } else {
-      setSubmitError(result.error || 'Failed to submit review. Please try again.');
+      setSubmitError(result.error || 'Something went wrong while sending your enquiry. Please try again or contact us directly.');
     }
   };
 
@@ -376,7 +376,7 @@ export default function Reviews({ onOpenBooking, onOpenLightbox }) {
               >
                 <div className="letter-paper-inner">
                   <div className="letter-header">
-                    <span className="letter-salutation">Dear Jyoti,</span>
+                    <span className="letter-salutation">Dear Jyoti Khatri,</span>
                   </div>
                   <p className="letter-body">{letObj.review}</p>
                   <div className="letter-footer">
@@ -444,7 +444,7 @@ export default function Reviews({ onOpenBooking, onOpenLightbox }) {
                 <div className="success-icon">✓</div>
                 <h3 className="success-title">Thank You Dear Bride!</h3>
                 <p className="success-text">
-                  Your words have been received with love. Thank you for sharing your special moment with Jyoti.
+                  Your words have been received with love. Thank you for sharing your special moment with Jyoti Khatri.
                 </p>
               </div>
             ) : (

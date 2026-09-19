@@ -8,7 +8,7 @@ export default function ServicesTestimonialsSection() {
   const testimonials = [
     {
       id: 1,
-      quote: "I stressed over a lot of decisions I had to make for my wedding but Booking Jyoti Govindani Makeovers for my wedding makeup was certainly not one of them. I booked her for all events and every look was different and beautiful in its own way. Best thing about her makeup is she enhanced my features rather than giving the same look to every bride. I really felt flawless on my big day and not just made-up.",
+      quote: "I stressed over a lot of decisions I had to make for my wedding but Booking Jyoti Khatri Makeovers for my wedding makeup was certainly not one of them. I booked her for all events and every look was different and beautiful in its own way. Best thing about her makeup is she enhanced my features rather than giving the same look to every bride. I really felt flawless on my big day and not just made-up.",
       author: "Manisha Choudhary",
       images: {
         img1: "/images/jyotikhatri222222.png",
@@ -18,7 +18,7 @@ export default function ServicesTestimonialsSection() {
     },
     {
       id: 2,
-      quote: "It was one of my best experiences. All my looks were very different and amazing. Everybody liked my looks and makeover. I would definitely suggest Jyoti if you want some different and best makeovers.",
+      quote: "It was one of my best experiences. All my looks were very different and amazing. Everybody liked my looks and makeover. I would definitely suggest Jyoti Khatri if you want some different and best makeovers.",
       author: "Kajal Dhoot",
       images: {
         img1: "/images/jyotikhatri5.png",
@@ -28,7 +28,7 @@ export default function ServicesTestimonialsSection() {
     },
     {
       id: 3,
-      quote: "Jyoti made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments.",
+      quote: "Jyoti Khatri made me feel like the most confident version of myself on my wedding day. My makeup looked like real glowing skin even after 14 hours of pheras and emotional moments.",
       author: "Ananya Sharma",
       images: {
         img1: "/images/jyotikhatri7.png",

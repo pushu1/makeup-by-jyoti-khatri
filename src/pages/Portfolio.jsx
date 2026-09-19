@@ -8,8 +8,7 @@ export default function Portfolio({ onOpenBooking, onOpenLightbox }) {
 
   // State management
   const [activeMood, setActiveMood] = useState('all');
-  const [activeJourneyIndex, setActiveJourneyIndex] = useState(0);
-  const [activeFaceDetail, setActiveFaceDetail] = useState(null);
+  const [activeFaceDetail, setActiveFaceDetail] = useState('eyes');
   const [activeScrollStoryIndex, setActiveScrollStoryIndex] = useState(0);
   const [sliderPos, setSliderPos] = useState(50);
 
@@ -17,7 +16,6 @@ export default function Portfolio({ onOpenBooking, onOpenLightbox }) {
   const hero = pData.hero || {};
   const moods = pData.moods || [];
   const featured = pData.featuredLook || {};
-  const journey = pData.makeupJourney || {};
   const scrollStories = pData.scrollStories || {};
   const faceDetails = pData.faceDetails || {};
   const beforeAfter = pData.transformations || {};
@@ -51,11 +49,6 @@ export default function Portfolio({ onOpenBooking, onOpenLightbox }) {
   const handleWhatsAppClick = () => {
     window.open(social.whatsappUrl, '_blank', 'noopener,noreferrer');
   };
-
-  const currentJourneyStage =
-    journey.stages && journey.stages[activeJourneyIndex]
-      ? journey.stages[activeJourneyIndex]
-      : {};
 
   const storiesList = scrollStories.stories || [];
   const currentScrollStory = storiesList[activeScrollStoryIndex] || {};
@@ -245,65 +238,6 @@ export default function Portfolio({ onOpenBooking, onOpenLightbox }) {
         </div>
       </section>
 
-      {/* SECTION 4: THE MAKEUP JOURNEY (BEHIND THE TRANSFORMATION) */}
-      <section className="portfolio-journey-section">
-        <div className="container">
-          <div className="section-header-editorial text-center mb-5">
-            <span className="editorial-eyebrow">BEHIND THE SCENES</span>
-            <h2 className="editorial-title">{journey.heading}</h2>
-            <p className="editorial-subtitle">{journey.subheading}</p>
-            <div className="gold-divider-center"></div>
-          </div>
-
-          <div className="journey-interactive-stage">
-            {/* Timeline Selector Buttons */}
-            <div className="journey-timeline-buttons">
-              {journey.stages &&
-                journey.stages.map((stage, idx) => (
-                  <button
-                    key={stage.num}
-                    className={`journey-timeline-btn ${
-                      activeJourneyIndex === idx ? 'active' : ''
-                    }`}
-                    onClick={() => setActiveJourneyIndex(idx)}
-                  >
-                    <span className="journey-btn-num">{stage.num}</span>
-                    <span className="journey-btn-title">{stage.title}</span>
-                  </button>
-                ))}
-            </div>
-
-            {/* Display Stage Content */}
-            <div className="journey-display-panel">
-              <div className="journey-display-img-col">
-                <div className="journey-img-frame">
-                  <img
-                    src={currentJourneyStage.image}
-                    alt={currentJourneyStage.title}
-                  />
-                  <span className="journey-img-badge">
-                    STAGE {currentJourneyStage.num}
-                  </span>
-                </div>
-              </div>
-
-              <div className="journey-display-text-col">
-                <span className="journey-stage-num">
-                  {currentJourneyStage.num} / 06
-                </span>
-                <h3 className="journey-stage-title">
-                  {currentJourneyStage.title}
-                </h3>
-                <h4 className="journey-stage-subtitle">
-                  {currentJourneyStage.subtitle}
-                </h4>
-                <p className="journey-stage-desc">{currentJourneyStage.desc}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* SECTION 5: CINEMATIC SCROLL STORY */}
       <section className="portfolio-scroll-story-section">
         <div className="container">
@@ -351,7 +285,7 @@ export default function Portfolio({ onOpenBooking, onOpenLightbox }) {
       <section className="portfolio-face-details-section">
         <div className="container">
           <div className="section-header-editorial text-center mb-5">
-            <span className="editorial-eyebrow">ARTISTRY PRECISION</span>
+            <span className="editorial-eyebrow">PRECISION ARTISTRY</span>
             <h2 className="editorial-title">{faceDetails.heading}</h2>
             <p className="editorial-subtitle">{faceDetails.subheading}</p>
             <div className="gold-divider-center"></div>
@@ -359,27 +293,41 @@ export default function Portfolio({ onOpenBooking, onOpenLightbox }) {
 
           <div className="face-details-interactive-container">
             <div className="face-details-img-frame">
-              <img src={faceDetails.mainImage} alt="The Face Behind The Look" />
+              <img src={faceDetails.mainImage} alt="Attention To Every Detail" />
 
-              {/* Detail Pointer Labels */}
+              {/* HOTSPOT PINS OVERLAYING IMAGE */}
               {faceDetails.labels &&
                 faceDetails.labels.map((lbl) => (
                   <div
                     key={lbl.id}
-                    className={`face-pointer-node ${
+                    className={`hotspot-pin pin-${lbl.id} align-${lbl.align || 'right'} ${
                       activeFaceDetail === lbl.id ? 'active' : ''
                     }`}
                     style={{ top: lbl.y, left: lbl.x }}
+                    onClick={() => setActiveFaceDetail(lbl.id)}
                     onMouseEnter={() => setActiveFaceDetail(lbl.id)}
-                    onMouseLeave={() => setActiveFaceDetail(null)}
                   >
-                    <div className="pointer-dot"></div>
-                    <div className="pointer-label-box">
-                      <span className="pointer-title">{lbl.title}</span>
-                      <span className="pointer-desc">{lbl.detail}</span>
+                    <div className="pin-dot">
+                      <span className="dot-center"></span>
+                      <span className="dot-ring"></span>
+                      <span className="dot-pulse"></span>
                     </div>
+                    <span className="pin-label">{lbl.title}</span>
                   </div>
                 ))}
+
+              {/* ACTIVE HOTSPOT CARD OVERLAY IN BOTTOM-LEFT CORNER */}
+              {activeFaceDetail && (() => {
+                const activeObj = faceDetails.labels?.find((l) => l.id === activeFaceDetail);
+                if (!activeObj) return null;
+                return (
+                  <div className="hotspot-info-card">
+                    <span className="info-tag">{activeObj.title}</span>
+                    <h4>{activeObj.title}</h4>
+                    <p>{activeObj.detail}</p>
+                  </div>
+                );
+              })()}
             </div>
           </div>
         </div>

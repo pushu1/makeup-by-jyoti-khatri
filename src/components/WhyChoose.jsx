@@ -9,7 +9,7 @@ export default function WhyChoose() {
       <div className="container">
         <div className="section-header">
           <span className="eyebrow">The Signature Standard</span>
-          <h2 className="section-title">Why Brides Choose Jyoti</h2>
+          <h2 className="section-title">Why Brides Choose Jyoti Khatri</h2>
           <p className="section-subtitle">A bespoke, peaceful beauty experience tailored to make you glow.</p>
           <div className="heading-gold-line">
             <span></span>
